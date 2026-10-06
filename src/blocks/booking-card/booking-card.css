@@ -1,0 +1,24 @@
+.booking-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+  padding: 25px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-top: 16px;
+  overflow-wrap: anywhere;
+}
+.booking-card__title {
+  margin-bottom: 12px;
+}
+.booking-card__text {
+  margin-bottom: 7px;
+}
+@media (max-width: 520px) {
+  .booking-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

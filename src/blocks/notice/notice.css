@@ -1,0 +1,33 @@
+.notice_error {
+  color: var(--error);
+  background: var(--error-bg);
+  padding: 14px;
+  border-radius: 7px;
+  font-size: 14px;
+}
+.notice_success,
+.notice_empty {
+  padding: 38px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin: 25px 0;
+}
+.notice__text {
+  max-width: 650px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .notice_success {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+      opacity 200ms ease,
+      transform 200ms ease;
+  }
+  @starting-style {
+    .notice_success {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+  }
+}

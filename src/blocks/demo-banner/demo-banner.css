@@ -1,0 +1,12 @@
+.demo-banner {
+  text-align: center;
+  background: var(--soft);
+  padding: 11px 20px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+@media (max-width: 520px) {
+  .demo-banner {
+    font-size: 11px;
+  }
+}

@@ -1,0 +1,48 @@
+.table-map__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  padding: 18px;
+  background: var(--map-bg);
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  margin: 18px 0;
+}
+.table-map__table {
+  padding: 14px 4px;
+  background: var(--surface);
+  color: var(--accent);
+  border-color: var(--table-border);
+  min-height: 100px;
+  font-size: 12px;
+}
+.table-map__capacity,
+.table-map__state {
+  display: block;
+  margin-top: 6px;
+}
+.table-map__table_selected {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.table-map__table:disabled {
+  background: var(--disabled-bg);
+  color: var(--disabled-text);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .table-map__table {
+    transition:
+      background-color 160ms ease,
+      color 160ms ease,
+      transform 160ms ease;
+  }
+  .table-map__table:active {
+    transform: scale(0.97);
+  }
+}
+@media (max-width: 520px) {
+  .table-map__grid {
+    padding: 10px;
+    gap: 8px;
+  }
+}

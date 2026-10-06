@@ -1,0 +1,45 @@
+{
+  "name": "restaurant-booking-coursework",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack serve --mode development",
+    "build": "webpack --mode production",
+    "test": "node scripts/test.cjs",
+    "typecheck": "tsc --noEmit",
+    "test:browser": "node scripts/browser-test.cjs",
+    "check:bem": "node scripts/check-bem.cjs",
+    "test:theme": "node scripts/test-theme.cjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "РЈС‡РµР±РЅРѕРµ РїСЂРёР»РѕР¶РµРЅРёРµ РґР»СЏ Р±СЂРѕРЅРёСЂРѕРІР°РЅРёСЏ СЃС‚РѕР»РёРєРѕРІ РІ СЂРµСЃС‚РѕСЂР°РЅР°С…",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^7.6.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@typescript-eslint/eslint-plugin": "^8.33.0",
+    "@typescript-eslint/parser": "^8.33.0",
+    "css-loader": "^7.1.2",
+    "eslint": "^9.28.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-react": "^7.37.5",
+    "html-webpack-plugin": "^5.6.3",
+    "playwright": "1.62.1",
+    "prettier": "^3.5.3",
+    "style-loader": "^4.0.0",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.8.3",
+    "webpack": "^5.99.9",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.1"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

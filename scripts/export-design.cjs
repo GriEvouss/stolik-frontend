@@ -1,0 +1,40 @@
+const { chromium } = require('playwright');
+const fs = require('node:fs');
+const path = require('node:path');
+(async () => {
+  const out = path.resolve(__dirname, '../design/figma-preparation');
+  fs.mkdirSync(out, { recursive: true });
+  const browser = await chromium.launch({ channel: 'chrome', headless: true });
+  try {
+    const context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, locale: 'ru-RU', reducedMotion: 'reduce' });
+    const page = await context.newPage();
+    const shot = (name) => page.screenshot({ path: path.join(out, name + '.png'), fullPage: true });
+    await page.goto('http://127.0.0.1:3001');
+    await shot('01-catalog-desktop');
+    await page.getByRole('button', { name: 'Выбрать столик' }).first().click();
+    const dialog = page.getByRole('dialog');
+    await dialog.getByLabel('Гостей', { exact: true }).fill('5');
+    await dialog.getByRole('button', { name: '№ 1 3 мест Свободен', exact: true }).click();
+    await dialog.getByRole('button', { name: '№ 2 3 мест Свободен', exact: true }).click();
+    await dialog.getByLabel('Ваше имя').fill('Тестовый Гость');
+    await dialog.getByLabel('Телефон').fill('+7 900 000-00-00');
+    await shot('02-booking-selected-desktop');
+    await dialog.getByRole('button', { name: 'Сохранить демобронь' }).click();
+    await dialog.getByRole('status').waitFor();
+    await shot('03-booking-success-desktop');
+    await dialog.getByRole('link', { name: 'Мои бронирования' }).click();
+    await page.locator('.booking-card').waitFor();
+    await shot('04-bookings-desktop');
+    await page.getByRole('button', { name: 'Отменить бронь', exact: true }).click();
+    await shot('05-cancel-confirmation-desktop');
+    await page.goto('http://127.0.0.1:3001/restaurant/2');
+    await shot('06-restaurant-occupied-desktop');
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('http://127.0.0.1:3001');
+    await shot('07-catalog-mobile');
+    await page.getByRole('button', { name: 'Выбрать столик' }).first().click();
+    await shot('08-booking-mobile');
+    fs.writeFileSync(path.join(out, 'capture.json'), JSON.stringify({ capturedAt: new Date().toISOString(), browser: await browser.version(), desktop: [1440, 1000], mobile: [390, 844], source: 'restaurant-app-final', destination: 'Figma preparation only; not uploaded' }, null, 2));
+    console.log('Exported 8 actual interface states to design/figma-preparation');
+  } finally { await browser.close(); }
+})().catch(e => { console.error(e); process.exitCode = 1; });

@@ -1,0 +1,11 @@
+.page-layout {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 28px 64px;
+  min-height: 70vh;
+}
+@media (max-width: 520px) {
+  .page-layout {
+    padding: 0 16px 36px;
+  }
+}

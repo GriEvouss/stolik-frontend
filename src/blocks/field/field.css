@@ -1,0 +1,24 @@
+.field__control {
+  font: inherit;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  min-width: 0;
+}
+.field__control {
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--surface);
+  color: var(--text);
+  width: 100%;
+  min-width: 0;
+}
+.field__control_multiline {
+  resize: vertical;
+}

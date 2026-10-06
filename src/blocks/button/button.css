@@ -1,0 +1,37 @@
+.button {
+  font: inherit;
+}
+.button {
+  background: var(--accent);
+  color: var(--on-accent);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  padding: 13px 20px;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 600;
+}
+.button:hover {
+  background: var(--accent-hover);
+}
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.button_secondary {
+  background: transparent;
+  color: var(--accent);
+  margin: 4px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .button {
+    transition:
+      background-color 0.18s,
+      color 0.18s;
+  }
+}
+
+.button_secondary:hover {
+  color: var(--on-accent);
+}
